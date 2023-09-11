@@ -1,0 +1,29 @@
+format = "$directory$git_branch$git_status$elixir$kubernetes$cmd_duration$line_break$character"
+scan_timeout = 20
+line_break = true
+
+# Replace the "❯" symbol in the prompt with "❯❯"
+# Prompt format config
+[character]
+format = "[❯❯ ](bold purple)"
+success_symbol = "[❯❯ ](bold green) "
+error_symbol = "[❯❯ ](bold red) "
+
+[elixir]
+symbol = "💧 "
+format = "$symbol"
+
+[directory]
+style = "bold blue"
+
+# Kubernetes prompt (context and namespace)
+[kubernetes]
+disabled = false
+symbol = "☸ "
+format = '[$symbol$namespace \(ctx $context\)](green bold)'
+
+[cmd_duration]
+format = "[$duration]($style) "
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
