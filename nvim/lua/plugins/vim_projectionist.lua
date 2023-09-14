@@ -1,21 +1,17 @@
-local g = vim.g
-
-g.projectionist_heuristics = vim.json.decode([[
-{
-  "Cargo.toml": {
-    "src/*.rs": {"type": "src"},
-    "tests/*.rs": {"type": "test"},
-    "benchmarks/*.rs": {"type": "bench"},
-    "Cargo.toml": {"type": "config"}
-  },
-  "rebar.config": {
-    "*.erl": {
-      "template": ["-module({basename}).", "", "-export([])", ""]
-    },
-    "src/*.app.src": {"type": "app"},
-    "src/*.erl": {
-      "type": "src",
-      "alternate": "test/{}_SUITE.erl"
+return {
+  {
+    "tpope/vim-projectionist",
+    init = function()
+      vim.g.projectionist_heuristics = vim.json.decode([[
+        {
+          "rebar.config": {
+          "*.erl": {
+          "template": ["-module({basename}).", "", "-export([])", ""]
+        },
+        "src/*.app.src": {"type": "app"},
+        "src/*.erl": {
+          "type": "src",
+          "alternate": "test/{}_SUITE.erl"
     },
     "test/*_SUITE.erl": {
       "type": "test",
@@ -119,3 +115,6 @@ g.projectionist_heuristics = vim.json.decode([[
   }
 }
 ]])
+    end,
+  }
+}

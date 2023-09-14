@@ -1,7 +1,6 @@
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local lualine = require("lualine")
 
 -- Color table for highlights
 -- stylua: ignore
@@ -39,14 +38,13 @@ local config = {
     -- Disable sections and component separators
     component_separators = "",
     section_separators = "",
-    --[[ theme = {
+    theme = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we
       -- are just setting default looks o statusline
       normal = { c = { fg = colors.fg, bg = colors.bg } },
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    }, ]]
-    theme = "tundra",
+    },
   },
   sections = {
     -- these are to remove the defaults
@@ -74,7 +72,7 @@ local function ins_left(component)
   table.insert(config.sections.lualine_c, component)
 end
 
--- Inserts a component in lualine_x ot right section
+-- Inserts a component in lualine_x at right section
 local function ins_right(component)
   table.insert(config.sections.lualine_x, component)
 end
@@ -98,13 +96,13 @@ ins_left({
       n = colors.red,
       i = colors.green,
       v = colors.blue,
-      [""] = colors.blue,
+      [""] = colors.blue,
       V = colors.blue,
       c = colors.magenta,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
-      [""] = colors.orange,
+      [""] = colors.orange,
       ic = colors.yellow,
       R = colors.violet,
       Rv = colors.violet,
@@ -201,7 +199,7 @@ ins_right({
 ins_right({
   "diff",
   -- Is it me or the symbol for modified us really weird
-  symbols = { added = " ", modified = "柳 ", removed = " " },
+  symbols = { added = " ", modified = "󰝤 ", removed = " " },
   diff_color = {
     added = { fg = colors.green },
     modified = { fg = colors.orange },
@@ -218,5 +216,11 @@ ins_right({
   padding = { left = 1 },
 })
 
--- Now don't forget to initialize lualine
-lualine.setup(config)
+return {
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup(config)
+    end,
+  },
+}
