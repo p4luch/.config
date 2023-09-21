@@ -1,46 +1,48 @@
-local opts = { noremap = true, silent = true }
-
--- Mappings for diagnostic
-vim.diagnostic.config({ virtual_text = false })
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "<space>dp", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "<space>dn", vim.diagnostic.goto_next, opts)
--- map("n", "<space>q", vim.diagnostic.setloclist, opts)
-
-local on_attach = function(_, bufnr)
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  -- map("n", "gD", vim.lsp.buf.declaration, bufopts) -- jump to DECLARATION, not used by many thus disabled
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts) -- jump to definition (e.g. function implementation)
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts) -- display docs in float window
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts) -- display all occurences in files under cursor
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts) -- display function params help
-  vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set("n", "<space>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts) -- not supported by elixir
-  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts) -- rename all occurences
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts) -- display all references for symbol under cursor
-  vim.keymap.set("n", "<space>f", function()
-    vim.lsp.buf.format({ async = true })
-  end, bufopts) -- format code
-end
-
 return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
+      "towolf/vim-helm",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      local opts = { noremap = true, silent = true }
+
+      -- Mappings for diagnostic
+      vim.diagnostic.config({ virtual_text = false })
+      vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+      vim.keymap.set("n", "<space>dp", vim.diagnostic.goto_prev, opts)
+      vim.keymap.set("n", "<space>dn", vim.diagnostic.goto_next, opts)
+      -- map("n", "<space>q", vim.diagnostic.setloclist, opts)
+
+      local on_attach = function(_, bufnr)
+        -- Mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        -- map("n", "gD", vim.lsp.buf.declaration, bufopts) -- jump to DECLARATION, not used by many thus disabled
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts) -- jump to definition (e.g. function implementation)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts) -- display docs in float window
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts) -- display all occurences in files under cursor
+        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts) -- display function params help
+        vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set("n", "<space>wl", function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts) -- not supported by elixir
+        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts) -- rename all occurences
+        vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts) -- display all references for symbol under cursor
+        vim.keymap.set("n", "<space>f", function()
+          vim.lsp.buf.format({ async = true })
+        end, bufopts) -- format code
+      end
+
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       require("lspconfig").elixirls.setup({
+        cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -158,7 +160,6 @@ return {
         },
       })
       require("lspconfig").emmet_ls.setup({
-        on_attach = on_attach,
         filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "heex" },
       })
 
@@ -168,6 +169,7 @@ return {
       })
 
       require("lspconfig").helm_ls.setup({
+        cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/helm_ls"), "serve" },
         on_attach = on_attach,
         capabilities = capabilities,
       })
