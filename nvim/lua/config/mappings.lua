@@ -1,4 +1,4 @@
-local opt = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<Leader>t", "<cmd>:tabe<cr>", opts)
 vim.keymap.set("n", "<Leader>w", "<cmd>:w<cr>", opts)
