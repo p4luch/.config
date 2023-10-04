@@ -1,0 +1,15 @@
+export KERL_BUILD_DOCS=no
+export KERL_INSTALL_MANPAGES=no
+export KERL_CONFIGURE_OPTIONS="--enable-lock-counter \
+                               --disable-hipe \
+                               --with-ssl=$(brew --prefix openssl@1.1) \
+                               --without-javac \
+                               --enable-smp-support \
+                               --enable-threads \
+                               --enable-kernel-pool \
+                               --enable-darwin-64bit \
+                               --enable-vm-probes \
+                               --with-dynamic-trace=dtrace \
+                               --disable-native-libs \
+                               --with-wx \
+                               --with-odbc=$(brew --prefix unixodbc)"

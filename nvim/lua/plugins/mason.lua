@@ -2,7 +2,7 @@ return {
   {
     "williamboman/mason.nvim",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim"
+      "williamboman/mason-lspconfig.nvim",
     },
     config = function()
       require("mason").setup({})
@@ -18,9 +18,11 @@ return {
           "graphql",
           "emmet_ls",
           "helm_ls",
-          "taplo"
-        }
+          "taplo",
+          "dockerls",
+          "docker_compose_language_service",
+        },
       })
-    end
-  }
+    end,
+  },
 }
