@@ -1,5 +1,5 @@
-export KERL_BUILD_DOCS=no
-export KERL_INSTALL_MANPAGES=no
+export KERL_BUILD_DOCS=yes
+export KERL_INSTALL_MANPAGES=yes
 export KERL_CONFIGURE_OPTIONS="--enable-lock-counter \
                                --disable-hipe \
                                --with-ssl=$(brew --prefix openssl@1.1) \
