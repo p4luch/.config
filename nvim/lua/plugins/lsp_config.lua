@@ -58,6 +58,9 @@ return {
             client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
               Lua = {
                 runtime = {
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
                   -- Tell the language server which version of Lua you're using
                   -- (most likely LuaJIT in the case of Neovim)
                   version = "LuaJIT",
