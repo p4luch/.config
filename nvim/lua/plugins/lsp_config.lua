@@ -2,8 +2,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      -- "hrsh7th/cmp-nvim-lsp",
       "towolf/vim-helm",
+      "saghen/blink.cmp",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -39,11 +40,8 @@ return {
         end, bufopts) -- format code
       end
 
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       require("lspconfig").elixirls.setup({
         cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
-        capabilities = capabilities,
         on_attach = on_attach,
         settings = {
           fetchDeps = false,
@@ -53,51 +51,51 @@ return {
 
       require("lspconfig").lua_ls.setup({
         on_init = function(client)
-          local path = client.workspace_folders[1].name
-          if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-            client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
-              Lua = {
-                runtime = {
-                  diagnostics = {
-                    globals = { "vim" },
-                  },
-                  -- Tell the language server which version of Lua you're using
-                  -- (most likely LuaJIT in the case of Neovim)
-                  version = "LuaJIT",
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME,
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                  },
-                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                  -- library = vim.api.nvim_get_runtime_file("", true)
-                },
-              },
-            })
-
-            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+              return
+            end
           end
-          return true
+
+          client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+            runtime = {
+              diagnostics = {
+                globals = { "vim" },
+              },
+              -- Tell the language server which version of Lua you're using
+              -- (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME,
+                -- Depending on the usage, you might want to add additional paths here.
+                -- "${3rd}/luv/library"
+                -- "${3rd}/busted/library",
+              },
+              -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
+              -- library = vim.api.nvim_get_runtime_file("", true)
+            },
+          })
         end,
+        settings = {
+          Lua = {},
+        },
       })
 
       require("lspconfig").erlangls.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").dockerls.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").yamlls.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
         setings = {
           yaml = {
             schemas = {
@@ -168,26 +166,27 @@ return {
 
       require("lspconfig").graphql.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").helm_ls.setup({
         cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/helm_ls"), "serve" },
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").taplo.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").helm_ls.setup({
         on_attach = on_attach,
-        capabilities = capabilities,
       })
 
       require("lspconfig").docker_compose_language_service.setup({})
+
+      for server, config in pairs(opts.servers or {}) do
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        require("lspconfig")[server].setup(config)
+      end
     end,
   },
 }

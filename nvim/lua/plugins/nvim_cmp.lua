@@ -1,5 +1,5 @@
 return {
-  {
+  --[[ {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -11,7 +11,7 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "onsails/lspkind-nvim"
     },
-    config = function() 
+    config = function()
       require("cmp").setup({
         snippet = {
           expand = function(args)
@@ -62,5 +62,5 @@ return {
       require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
 
     end
-  }
+  } ]]
 }
