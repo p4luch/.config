@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- "hrsh7th/cmp-nvim-lsp",
       "towolf/vim-helm",
       "saghen/blink.cmp",
     },
