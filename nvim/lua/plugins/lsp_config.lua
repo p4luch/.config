@@ -183,6 +183,10 @@ return {
 
       require("lspconfig").docker_compose_language_service.setup({})
 
+      require("lspconfig").marksman.setup({
+        on_attach = on_attach,
+      })
+
       for server, config in pairs(opts.servers or {}) do
         config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         require("lspconfig")[server].setup(config)
