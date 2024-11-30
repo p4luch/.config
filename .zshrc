@@ -146,7 +146,6 @@ export PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig:$PKG_CONFIG_PATH"
 export CC="/usr/bin/gcc -I$(brew --prefix unixodbc)/include -I$(brew --prefix openssl@1.1)/include"
 export LDFLAGS="-L$(brew --prefix unixodbc)/lib -L$(brew --prefix openssl@1.1)/lib"
 
-export BAT_THEME="TwoDark"
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 fpath=(~/.zsh/completion $fpath)
