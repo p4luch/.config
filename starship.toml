@@ -1,7 +1,9 @@
-format = "$directory$git_branch$git_status$elixir$kubernetes$cmd_duration$line_break$character"
+format = "$direnv$directory$git_branch$git_status$elixir$kubernetes$cmd_duration$line_break$character"
 scan_timeout = 20
-line_break = true
 palette = "catppuccin_mocha"
+
+[line_break]
+disabled = false
 
 # Replace the "❯" symbol in the prompt with "❯❯"
 # Prompt format config
@@ -16,6 +18,7 @@ format = "$symbol"
 
 [directory]
 style = "bold blue"
+truncate_to_repo = true
 
 # Kubernetes prompt (context and namespace)
 [kubernetes]
