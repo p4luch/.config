@@ -73,8 +73,6 @@ ZSH_THEME=""
 plugins=(git macos asdf history tmux docker docker-compose kubectl zsh-syntax-highlighting zsh-autosuggestions)
 
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,23 +99,12 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Pure prompt config
- # autoload -U promptinit; promptinit
-# prompt pure
-
 # Starship prompt config
 eval "$(starship init zsh)"
-
 # asdf-vm config
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-# Aliases
-alias vim="nvim"
-alias l="eza -a -h -l --no-user --git --icons --color=always --group-directories-first"
-
 # Source other dotfiles
 source "$HOME/.kerlrc"
-
 # FZF configuration
 export FZF_DEFAULT_COMMAND="rg --files --ignore-vcs --hidden"
 alias fzf="fzf --height 40% --layout reverse --info inline --border \
@@ -146,17 +133,25 @@ export PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig:$PKG_CONFIG_PATH"
 export CC="/usr/bin/gcc -I$(brew --prefix unixodbc)/include -I$(brew --prefix openssl@1.1)/include"
 export LDFLAGS="-L$(brew --prefix unixodbc)/lib -L$(brew --prefix openssl@1.1)/lib"
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-
-fpath=(~/.zsh/completion $fpath)
-autoload -U compinit
-compinit
 
 export AWS_REGION="eu-central-1"
 export AWS_DEFAULT_REGION="eu-central-1"
 
 export PATH="/opt/homebrew/bin/aws_completer:$PATH"
 eval "$(direnv hook zsh)"
+
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit
+
+source $ZSH/oh-my-zsh.sh
+
+# Aliases
+alias vim="nvim"
+alias l="eza -a -h -l --no-user --git --icons --color=always --group-directories-first"
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
