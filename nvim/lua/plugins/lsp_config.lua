@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "towolf/vim-helm",
       "saghen/blink.cmp",
     },
     event = { "BufReadPre", "BufNewFile" },
@@ -42,6 +41,7 @@ return {
       require("lspconfig").elixirls.setup({
         cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
         on_attach = on_attach,
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         settings = {
           fetchDeps = false,
           dialyzerEnabled = false,
@@ -49,6 +49,7 @@ return {
       })
 
       require("lspconfig").lua_ls.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -85,27 +86,13 @@ return {
         },
       })
 
-      require("lspconfig").erlangls.setup({
-        on_attach = on_attach,
-      })
-
       require("lspconfig").dockerls.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         on_attach = on_attach,
-      })
-
-      require("lspconfig").yamlls.setup({
-        on_attach = on_attach,
-        setings = {
-          yaml = {
-            schemas = {
-              ["../../../nvim-data/language-servers/github-workflow.json"] = "/.github/workflows/*",
-              ["../../../nvim-data/language-server/language-servers/kubernetes-json-schema/v1.25.0-standalone-strict/all.json"] = "/*.k8s.yaml",
-            },
-          },
-        },
       })
 
       require("lspconfig").tailwindcss.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         on_attach = on_attach,
         init_options = {
           userLanguages = {
@@ -160,36 +147,18 @@ return {
         },
       })
       require("lspconfig").emmet_ls.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "heex" },
       })
 
-      require("lspconfig").graphql.setup({
-        on_attach = on_attach,
+      require("lspconfig").docker_compose_language_service.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
       })
-
-      require("lspconfig").helm_ls.setup({
-        cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/helm_ls"), "serve" },
-        on_attach = on_attach,
-      })
-
-      require("lspconfig").taplo.setup({
-        on_attach = on_attach,
-      })
-
-      require("lspconfig").helm_ls.setup({
-        on_attach = on_attach,
-      })
-
-      require("lspconfig").docker_compose_language_service.setup({})
 
       require("lspconfig").marksman.setup({
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
         on_attach = on_attach,
       })
-
-      for server, config in pairs(opts.servers or {}) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        require("lspconfig")[server].setup(config)
-      end
     end,
   },
 }

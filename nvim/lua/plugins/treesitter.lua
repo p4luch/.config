@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function () 
+    config = function()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
@@ -14,25 +14,21 @@ return {
           "eex",
           "heex",
           "gitignore",
-          "toml",
-          "erlang",
-          "yaml",
           "surface",
           "html",
           "markdown",
           "css",
           "javascript",
-          "graphql",
-          "json"
+          "json",
         },
         auto_install = false,
-        highlight = { 
-          enable = true, 
-          additional_vim_regex_highlighting = true
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
         },
-        indent = { enable = true },  
-        sync_install = false,  
+        indent = { enable = true },
+        sync_install = false,
       })
-    end
-  }
+    end,
+  },
 }

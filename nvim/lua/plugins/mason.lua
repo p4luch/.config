@@ -12,13 +12,8 @@ return {
         ensure_installed = {
           "elixirls",
           "lua_ls",
-          "erlangls",
-          "yamlls",
           "tailwindcss",
-          "graphql",
           "emmet_ls",
-          "helm_ls",
-          "taplo",
           "dockerls",
           "docker_compose_language_service",
         },
