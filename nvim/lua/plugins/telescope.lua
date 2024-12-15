@@ -7,7 +7,11 @@ return {
       "debugloop/telescope-undo.nvim",
     },
     keys = {
-      { "<Leader>ff", "<cmd>Telescope find_files find_command=rg,--files,--hidden,-g,!.git<cr>", opts },
+      {
+        "<Leader>ff",
+        "<cmd>Telescope find_files find_command=rg,--files,--hidden,-g,!.git,--sortr=modified<cr>",
+        opts,
+      },
       { "<Leader>fg", "<cmd>Telescope live_grep<cr>", opts },
       { "<Leader>fb", "<cmd>Telescope buffers<cr>", opts },
       { "<Leader>fh", "<cmd>Telescope help_tags<cr>", opts },
