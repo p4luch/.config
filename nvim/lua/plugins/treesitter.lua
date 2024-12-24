@@ -17,6 +17,7 @@ return {
           "surface",
           "html",
           "markdown",
+          "markdown_inline",
           "css",
           "javascript",
           "json",

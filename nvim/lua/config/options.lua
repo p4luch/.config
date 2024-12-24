@@ -54,3 +54,6 @@ vim.opt.swapfile = false -- disable swap files, keep swap dir config
 vim.opt.directory = vim.fn.expand("~/.config/nvim-data/swap")
 vim.opt.undodir = vim.fn.expand("~/.config/nvim-data/undo")
 vim.opt.undofile = true
+
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true

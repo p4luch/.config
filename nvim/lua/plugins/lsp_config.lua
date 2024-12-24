@@ -38,10 +38,12 @@ return {
         end, bufopts) -- format code
       end
 
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+
       require("lspconfig").elixirls.setup({
         cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/elixir-ls") },
         on_attach = on_attach,
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
         settings = {
           fetchDeps = false,
           dialyzerEnabled = false,
@@ -49,7 +51,7 @@ return {
       })
 
       require("lspconfig").lua_ls.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -63,21 +65,13 @@ return {
               diagnostics = {
                 globals = { "vim" },
               },
-              -- Tell the language server which version of Lua you're using
-              -- (most likely LuaJIT in the case of Neovim)
               version = "LuaJIT",
             },
-            -- Make the server aware of Neovim runtime files
             workspace = {
               checkThirdParty = false,
               library = {
                 vim.env.VIMRUNTIME,
-                -- Depending on the usage, you might want to add additional paths here.
-                -- "${3rd}/luv/library"
-                -- "${3rd}/busted/library",
               },
-              -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-              -- library = vim.api.nvim_get_runtime_file("", true)
             },
           })
         end,
@@ -87,12 +81,12 @@ return {
       })
 
       require("lspconfig").dockerls.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
         on_attach = on_attach,
       })
 
       require("lspconfig").tailwindcss.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
         on_attach = on_attach,
         init_options = {
           userLanguages = {
@@ -147,16 +141,18 @@ return {
         },
       })
       require("lspconfig").emmet_ls.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
+        on_attach = on_attach,
         filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "heex" },
       })
 
       require("lspconfig").docker_compose_language_service.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        on_attach = on_attach,
+        capabilities = capabilities,
       })
 
       require("lspconfig").marksman.setup({
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
+        capabilities = capabilities,
         on_attach = on_attach,
       })
     end,
