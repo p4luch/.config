@@ -142,10 +142,12 @@ return {
       })
       require("lspconfig").emmet_ls.setup({
         capabilities = capabilities,
+        on_attach = on_attach,
         filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "heex" },
       })
 
       require("lspconfig").docker_compose_language_service.setup({
+        on_attach = on_attach,
         capabilities = capabilities,
       })
 

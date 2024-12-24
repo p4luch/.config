@@ -1,8 +1,4 @@
-erlang 27.1.2
-rebar 3.22.1
-elixir 1.17.3-otp-27
+erlang 27.2
+elixir 1.18.1-otp-27
 kubectl 1.28.2
 kubetail 1.6.18
-minikube 1.31.2
-helm 3.12.3
-yarn 1.22.21
