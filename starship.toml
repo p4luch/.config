@@ -1,3 +1,5 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
 format = "$direnv$directory$git_branch$git_status$elixir$kubernetes$cmd_duration$line_break$character"
 scan_timeout = 20
 palette = "catppuccin_mocha"
@@ -5,12 +7,14 @@ palette = "catppuccin_mocha"
 [line_break]
 disabled = false
 
-# Replace the "❯" symbol in the prompt with "❯❯"
-# Prompt format config
+
 [character]
-format = "[❯❯ ](bold purple)"
-success_symbol = "[❯❯ ](bold green) "
-error_symbol = "[❯❯ ](bold red) "
+success_symbol = "[➜](bold #98c379)" #green
+error_symbol = "[➜](bold #e06c75)" #red
+
+[cmd_duration]
+format = "[ $duration]($style)"
+style = "bold" #white
 
 [elixir]
 symbol = "💧 "
@@ -25,9 +29,6 @@ truncate_to_repo = true
 disabled = false
 symbol = "☸ "
 format = '[$symbol$namespace \(ctx $context\)](green bold)'
-
-[cmd_duration]
-format = "[$duration]($style) "
 
 [git_branch]
 format = "[$symbol$branch(:$remote_branch)]($style) "
