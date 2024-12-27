@@ -9,12 +9,10 @@ return {
     keys = {
       {
         "<Leader>ff",
-        "<cmd>Telescope find_files find_command=rg,--files,--hidden,-g,!.git,--sortr=modified<cr>",
+        "<cmd>Telescope find_files find_command=fd,--type,f,--strip-cwd-prefix,--hidden,--follow,--exclude,.git<cr>",
         opts,
       },
       { "<Leader>fg", "<cmd>Telescope live_grep<cr>", opts },
-      { "<Leader>fb", "<cmd>Telescope buffers<cr>", opts },
-      { "<Leader>fh", "<cmd>Telescope help_tags<cr>", opts },
       { "<Leader>bf", "<cmd>Telescope file_browser<cr>", opts },
       { "<Leader>u", "<cmd>Telescope undo<cr>", opts },
     },

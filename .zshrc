@@ -106,23 +106,38 @@ eval "$(starship init zsh)"
 # Source other dotfiles
 source "$HOME/.kerlrc"
 # FZF configuration
-export FZF_DEFAULT_COMMAND="rg --files --ignore-vcs --hidden"
-alias fzf="fzf --height 40% --layout reverse --info inline --border \
-    --preview 'bat {-1} --color=always'"
-
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-    --color=fg:#64748b,bg:#111827,hl:#bae6fd
-    --color=fg+:#bae6fd,bg+:#111827,hl+:#bae6fd
-    --color=info:#b1e3ad,prompt:#b1e3ad,pointer:#bae6fd
-    --color=marker:#64748b,spinner:#b1e3ad,header:#b1e3ad
-'
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview='bat {-1} --color=always'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+      --highlight-line \
+      --info=inline-right \
+      --ansi \
+      --layout=reverse \
+      --border=none
+      --color=bg+:#2e3c64 \
+      --color=bg:#1f2335 \
+      --color=border:#29a4bd \
+      --color=fg:#c0caf5 \
+      --color=gutter:#1f2335 \
+      --color=header:#ff9e64 \
+      --color=hl+:#2ac3de \
+      --color=hl:#2ac3de \
+      --color=info:#545c7e \
+      --color=marker:#ff007c \
+      --color=pointer:#ff007c \
+      --color=prompt:#2ac3de \
+      --color=query:#c0caf5:regular \
+      --color=scrollbar:#29a4bd \
+      --color=separator:#ff9e64 \
+      --color=spinner:#ff007c \
+    "
 source <(fzf --zsh)
 
 eval "$(zoxide init zsh)"
 
 export PATH="/opt/homebrew/opt/openjdk@11/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
-export KUBECTX_IGNORE_FZF=1
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
