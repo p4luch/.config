@@ -108,7 +108,6 @@ source "$HOME/.kerlrc"
 # FZF configuration
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview='bat {-1} --color=always'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
       --highlight-line \
       --info=inline-right \
