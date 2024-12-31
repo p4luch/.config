@@ -32,6 +32,7 @@ return {
           },
           file_browser = {
             hijack_netrw = true,
+            previewer = false,
           },
           undo = {
             side_by_side = true,

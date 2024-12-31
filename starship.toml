@@ -13,7 +13,7 @@ success_symbol = "[➜](bold #98c379)" #green
 error_symbol = "[➜](bold #e06c75)" #red
 
 [cmd_duration]
-format = "[ $duration]($style)"
+format = " [ $duration]($style)"
 style = "bold" #white
 
 [elixir]
