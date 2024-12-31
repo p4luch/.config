@@ -6,6 +6,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         elixir = { "mix" },
+        ["*"] = { "codespell", "trim_newlines", "trim_whitespace" },
       },
       format_on_save = {
         -- These options will be passed to conform.format()
