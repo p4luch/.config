@@ -33,7 +33,7 @@ local conditions = {
 }
 
 -- Config
-local config = {
+local opts = {
   options = {
     -- Disable sections and component separators
     component_separators = "",
@@ -70,12 +70,12 @@ local config = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
+  table.insert(opts.sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x at right section
 local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
+  table.insert(opts.sections.lualine_x, component)
 end
 
 ins_left({
@@ -200,8 +200,6 @@ ins_right({
 return {
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup(config)
-    end,
+    opts = opts,
   },
 }

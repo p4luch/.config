@@ -14,6 +14,7 @@ return {
       function()
         require("neotest").run.run()
       end,
+      desc = "Neotest, run nearest test",
       opts,
     },
     {
@@ -21,6 +22,7 @@ return {
       function()
         require("neotest").run.run(vim.fn.expand("%"))
       end,
+      desc = "Neotest, run test file",
       opts,
     },
   },
