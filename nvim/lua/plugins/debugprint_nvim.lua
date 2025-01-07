@@ -4,5 +4,5 @@ return {
     "echasnovski/mini.nvim",
   },
   version = "*",
-  config = true,
+  opts = {},
 }

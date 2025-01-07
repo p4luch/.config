@@ -7,6 +7,6 @@ return {
   end,
   ft = { "markdown" },
   keys = {
-    { "<Leader>mp", "<cmd>MarkdownPreview<cr>", { noremap = true, silent = true } },
+    { "<Leader>mp", "<cmd>MarkdownPreview<cr>", desc = "MarkdownPreview toggle", { noremap = true, silent = true } },
   },
 }

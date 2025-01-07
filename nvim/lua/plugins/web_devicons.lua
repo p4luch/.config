@@ -4,6 +4,6 @@ return {
     dependencies = {
       "nvim-lualine/lualine.nvim",
     },
-    config = true,
+    opts = {},
   },
 }

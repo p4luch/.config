@@ -17,25 +17,9 @@ return {
 
       local on_attach = function(_, bufnr)
         -- Mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        -- map("n", "gD", vim.lsp.buf.declaration, bufopts) -- jump to DECLARATION, not used by many thus disabled
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts) -- jump to definition (e.g. function implementation)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts) -- display docs in float window
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts) -- display all occurences in files under cursor
-        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts) -- display function params help
-        vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-        vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-        vim.keymap.set("n", "<space>wl", function()
-          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        end, bufopts)
-        vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts) -- not supported by elixir
-        vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts) -- rename all occurences
-        vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts) -- display all references for symbol under cursor
-        vim.keymap.set("n", "<space>f", function()
-          vim.lsp.buf.format({ async = true })
-        end, bufopts) -- format code
       end
 
       local capabilities = require("blink.cmp").get_lsp_capabilities()
