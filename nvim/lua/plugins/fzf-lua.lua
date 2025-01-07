@@ -24,6 +24,11 @@ return {
     defaults = {
       formatter = "path.filename_first",
     },
+    keymap = {
+      fzf = {
+        ["ctrl-p"] = "toggle-preview",
+      },
+    },
     winopts = {
       preview = {
         wrap = "wrap",
