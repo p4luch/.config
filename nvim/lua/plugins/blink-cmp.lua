@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   lazy = false,
   dependencies = { "rafamadriz/friendly-snippets" },
-  version = "v0.*",
+  version = "*",
   opts = {
     keymap = { preset = "enter" },
     appearance = {
@@ -70,7 +70,10 @@ return {
         },
       },
       list = {
-        selection = "auto_insert",
+        selection = {
+          preselect = true,
+          auto_insert = true,
+        },
       },
       documentation = {
         auto_show = true,
