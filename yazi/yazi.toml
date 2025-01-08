@@ -1,0 +1,3 @@
+[manager]
+ratio = [1, 3, 0]
+linemode = "permissions"

@@ -17,6 +17,11 @@ return {
       keymaps = {
         show_help = "<f1>",
       },
+      integrations = {
+        grep_in_directory = function(directory)
+          require("fzf-lua").files({ cwd = directory })
+        end,
+      },
     },
   },
 }
