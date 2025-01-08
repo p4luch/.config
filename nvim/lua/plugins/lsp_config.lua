@@ -139,6 +139,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
       })
+
+      require("lspconfig").taplo.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
     end,
   },
 }

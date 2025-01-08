@@ -5,6 +5,7 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       elixir = { "mix" },
+      toml = { "taplo" },
       ["*"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = {
