@@ -17,6 +17,7 @@ return {
           "dockerls",
           "docker_compose_language_service",
           "taplo",
+          "elp",
         },
       })
     end,

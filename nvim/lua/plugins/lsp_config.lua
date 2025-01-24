@@ -144,6 +144,11 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
       })
+
+      require("lspconfig").elp.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+      })
     end,
   },
 }
