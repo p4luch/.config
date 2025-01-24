@@ -33,8 +33,8 @@
   "nvim-tmux-navigation": { "branch": "main", "commit": "4898c98702954439233fdaf764c39636681e2861" },
   "nvim-treesitter": { "branch": "master", "commit": "51562d44fc6280f92bb9a3d87e7b3cb327377ca5" },
   "nvim-web-devicons": { "branch": "master", "commit": "aafa5c187a15701a7299a392b907ec15d9a7075f" },
+  "oil.nvim": { "branch": "master", "commit": "52f1683c7664819508e1d2fc85051d4a20c5d643" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "tokyonight.nvim": { "branch": "main", "commit": "c3ab53c3f544e4a04f2a05d43451fd9bedff51b4" },
-  "vim-projectionist": { "branch": "master", "commit": "5ff7bf79a6ef741036d2038a226bcb5f8b1cd296" },
-  "yazi.nvim": { "branch": "main", "commit": "07a628422f2b243423c93d21687a404906f62ead" }
+  "vim-projectionist": { "branch": "master", "commit": "5ff7bf79a6ef741036d2038a226bcb5f8b1cd296" }
 }
