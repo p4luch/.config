@@ -1,4 +1,5 @@
 return {
+  -- TODO add live view projection
   {
     "tpope/vim-projectionist",
     init = function()

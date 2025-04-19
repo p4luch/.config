@@ -70,7 +70,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git macos asdf history tmux docker docker-compose kubectl zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git macos history tmux docker docker-compose kubectl zsh-syntax-highlighting zsh-autosuggestions)
 
 
 # User configuration
@@ -102,7 +102,10 @@ fi
 # Starship prompt config
 eval "$(starship init zsh)"
 # asdf-vm config
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export ASDF_DATA_DIR="${HOME}/.asdf"
+export PATH="${ASDF_DATA_DIR}/shims:$PATH"
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
 # Source other dotfiles
 source "$HOME/.kerlrc"
 # FZF configuration
@@ -166,14 +169,7 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias l="eza -a -h -l --no-user --git --icons --color=always --group-directories-first"
 
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
+. ~/.asdf/plugins/golang/set-env.zsh
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # __conda_setup="$('/Users/lukaszpauszek/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -188,3 +184,6 @@ function y() {
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/lukaszpauszek/.lmstudio/bin"

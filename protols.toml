@@ -1,0 +1,2 @@
+[formatter]
+clang_format = "/opt/homebrew/bin/clang-format"

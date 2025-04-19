@@ -1,16 +1,17 @@
 return {
   "stevearc/conform.nvim",
   opts = {
-    log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       lua = { "stylua" },
       elixir = { "mix" },
       toml = { "taplo" },
+      proto = { "buf" },
+      go = { "gofumpt" },
       ["*"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
-      timeout_ms = 500,
+      timeout_ms = 1000,
       lsp_format = "fallback",
     },
     formatters = {

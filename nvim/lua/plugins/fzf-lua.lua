@@ -17,12 +17,26 @@ return {
       desc = "Nvim keymaps",
       { noremap = true, silent = true },
     },
+    {
+      "<Leader>fr",
+      "<cmd> FzfLua lsp_references<CR>",
+      "n",
+      desc = "Get LSP references for a symbol",
+      {noremap = true, silent = true}
+    },
+    {
+      "<Leader>ds",
+      "<cmd> FzfLua lsp_document_symbols<CR>",
+      "n",
+      desc = "Get symbols in a file from LSP",
+      {noremap = true, silent = true}
+    }
   },
   opts = {
     fzf_opts = { ["--wrap"] = true },
     fzf_colors = true,
     defaults = {
-      formatter = "path.filename_first",
+      formatter = "path.dirname_first",
     },
     keymap = {
       fzf = {

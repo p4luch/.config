@@ -21,6 +21,7 @@ return {
           "css",
           "javascript",
           "json",
+          "go",
         },
         auto_install = false,
         highlight = {
