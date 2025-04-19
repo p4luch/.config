@@ -18,6 +18,8 @@ return {
           "docker_compose_language_service",
           "taplo",
           "elp",
+          "buf_ls",
+          "gopls",
         },
       })
     end,

@@ -5,46 +5,6 @@ return {
   version = "*",
   opts = {
     keymap = { preset = "enter" },
-    appearance = {
-      use_nvim_cmp_as_default = false,
-      nerd_font_variant = "mono",
-      kind_icons = {
-        Text = "󰉿",
-        Method = "",
-        Function = "󰊕",
-        Constructor = "󰒓",
-
-        Field = "󰜢",
-        Variable = "󰆦",
-        Property = "󰖷",
-
-        Class = "󱡠",
-        Interface = "󱡠",
-        Struct = "󱡠",
-        Module = "󰅩",
-
-        Unit = "󰪚",
-        Value = "󰦨",
-        Enum = "󰦨",
-        EnumMember = "󰦨",
-
-        Keyword = "󰻾",
-        Constant = "󰏿",
-
-        Snippet = "󱄽",
-        Color = "󰏘",
-        File = "󰈔",
-        Reference = "󰬲",
-        Folder = "󰉋",
-        Event = "󱐋",
-        Operator = "󰪚",
-        TypeParameter = "󰬛",
-        Error = "󰏭",
-        Warning = "󰏯",
-        Information = "󰏮",
-        Hint = "󰏭",
-      },
-    },
     completion = {
       accept = { auto_brackets = { enabled = true } },
       menu = {
@@ -93,22 +53,6 @@ return {
 
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
-      providers = {
-        lsp = {
-          min_keyword_length = 1, -- Number of characters to trigger porvider
-          score_offset = 0, -- Boost/penalize the score of the items
-        },
-        path = {
-          min_keyword_length = 0,
-        },
-        snippets = {
-          min_keyword_length = 2,
-        },
-        buffer = {
-          min_keyword_length = 5,
-          max_items = 5,
-        },
-      },
     },
   },
   opts_extend = { "sources.default" },

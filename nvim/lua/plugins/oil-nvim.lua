@@ -12,6 +12,13 @@ return {
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
   keys = {
-    { "<Leader>bf", "<CMD>Oil --float<CR>", desc = "Open oil in cwd", { silent = true, noremap = true } },
+    {
+      "<Leader>bf",
+      function()
+        require("oil").open_float()
+      end,
+      desc = "Open oil in cwd",
+      { silent = true, noremap = true },
+    },
   },
 }
