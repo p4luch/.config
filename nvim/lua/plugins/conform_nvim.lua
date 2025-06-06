@@ -5,9 +5,7 @@ return {
       lua = { "stylua" },
       elixir = { "mix" },
       toml = { "taplo" },
-      proto = { "buf" },
-      go = { "gofumpt" },
-      ["*"] = { "trim_newlines", "trim_whitespace" },
+      rust = { "rustfmt" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()

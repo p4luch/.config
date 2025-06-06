@@ -21,7 +21,7 @@ return {
           "css",
           "javascript",
           "json",
-          "go",
+          "rust",
         },
         auto_install = false,
         highlight = {

@@ -1,6 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "echasnovski/mini.icons" },
   keys = {
     { "<Leader>ff", "<cmd>FzfLua files<CR>", "n", desc = "Find files", { noremap = true, silent = true } },
     {
@@ -22,15 +22,15 @@ return {
       "<cmd> FzfLua lsp_references<CR>",
       "n",
       desc = "Get LSP references for a symbol",
-      {noremap = true, silent = true}
+      { noremap = true, silent = true },
     },
     {
       "<Leader>ds",
       "<cmd> FzfLua lsp_document_symbols<CR>",
       "n",
       desc = "Get symbols in a file from LSP",
-      {noremap = true, silent = true}
-    }
+      { noremap = true, silent = true },
+    },
   },
   opts = {
     fzf_opts = { ["--wrap"] = true },
