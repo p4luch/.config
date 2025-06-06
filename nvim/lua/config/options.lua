@@ -25,7 +25,7 @@ vim.opt.mouse = ""
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.signcolumn = "auto"
-vim.opt.lazyredraw = true
+vim.opt.lazyredraw = false
 vim.colorcolumn = "80"
 
 vim.opt.expandtab = true

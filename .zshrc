@@ -187,3 +187,4 @@ alias l="eza -a -h -l --no-user --git --icons --color=always --group-directories
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/lukaszpauszek/.lmstudio/bin"
+export MANPAGER="nvim +Man!"
