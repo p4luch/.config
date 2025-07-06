@@ -1,6 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
-format = "$direnv$directory$git_branch$git_status$elixir$kubernetes$cmd_duration$line_break$character"
+format = "$direnv$directory$git_branch$git_status$aws$kubernetes$cmd_duration$line_break$character"
 scan_timeout = 20
 palette = "catppuccin_mocha"
 
@@ -10,11 +10,11 @@ disabled = false
 
 [character]
 success_symbol = "[➜](bold #98c379)" #green
-error_symbol = "[➜](bold #e06c75)" #red
+error_symbol = "[➜](bold #e06c75)"   #red
 
 [cmd_duration]
 format = " [ $duration]($style)"
-style = "bold" #white
+style = "bold"                    #white
 
 [elixir]
 symbol = "💧 "
@@ -60,3 +60,9 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+
+[aws]
+format = 'on [$symbol$profile]($style) '
+style = 'bold blue'
+symbol = '🅰 '
+disabled = false
