@@ -23,8 +23,36 @@ return {
     require("mini.indentscope").setup({})
     require("mini.animate").setup({})
     require("mini.icons").setup({})
-    -- TODO parse file names
-    require("mini.statusline").setup({})
+    require("mini.statusline").setup({
+      -- Content of statusline as functions which return statusline string. See
+      -- `:h statusline` and code of default contents (used instead of `nil`).
+      content = {
+        -- Content for active window
+        active = function()
+          local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
+          local git = MiniStatusline.section_git({ trunc_width = 40 })
+          local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
+          local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+          local location = MiniStatusline.section_location({ trunc_width = 75 })
+
+          return MiniStatusline.combine_groups({
+            { hl = mode_hl, strings = { mode } },
+            { hl = "MiniStatuslineDevinfo", strings = { git } },
+            "%<", -- Mark general truncate point
+            "%=", -- End left alignment
+            { hl = "MiniStatuslineDevinfo", strings = { lsp } },
+            { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+            { hl = mode_hl, strings = { location } },
+          })
+        end,
+
+        -- Content for inactive window(s)
+        inactive = nil,
+      },
+
+      -- Whether to use icons by default
+      use_icons = true,
+    })
   end,
   keys = {
     {

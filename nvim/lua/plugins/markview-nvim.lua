@@ -5,6 +5,9 @@ return {
     { "<Leader>mp", "<cmd>Markview Toggle<cr>", desc = "Toggle markdown preview", { silent = true, noremap = true } },
   },
   opts = {
+    experimental = {
+      check_rtp_message = false,
+    },
     preivew = {
       icon_provider = "devicons",
     },

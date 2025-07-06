@@ -16,6 +16,13 @@ return {
       stylua = {
         prepend_args = { "--indent-width", 2, "--indent-type", "Spaces" },
       },
+      mix = {
+        command = "mix",
+        args = { "format", "$FILENAME" },
+        stdin = false,
+        tempfile_postfix = ".ex",
+        require_cwd = true,
+      },
     },
   },
 }

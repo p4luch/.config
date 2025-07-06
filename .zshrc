@@ -151,9 +151,6 @@ export CC="/usr/bin/gcc -I$(brew --prefix unixodbc)/include -I$(brew --prefix op
 export LDFLAGS="-L$(brew --prefix unixodbc)/lib -L$(brew --prefix openssl@1.1)/lib"
 
 
-export AWS_REGION="eu-central-1"
-export AWS_DEFAULT_REGION="eu-central-1"
-
 export PATH="/opt/homebrew/bin/aws_completer:$PATH"
 eval "$(direnv hook zsh)"
 
@@ -188,3 +185,4 @@ alias l="eza -a -h -l --no-user --git --icons --color=always --group-directories
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/lukaszpauszek/.lmstudio/bin"
 export MANPAGER="nvim +Man!"
+export AWS_PROFILE=ebitmax
